@@ -10,7 +10,6 @@ from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
 from xgboost import XGBClassifier
 from lightgbm import LGBMClassifier
-from catboost import CatBoostClassifier
 from sklearn.metrics import mean_squared_error, r2_score, confusion_matrix, classification_report
 import pandas as pd
 
@@ -58,7 +57,6 @@ models = {
     'RandomForest': RandomForestClassifier(n_estimators=n_estimators, max_depth=max_depth, random_state=42),
     'XGBoost': XGBClassifier(random_state=42, eval_metric='logloss', learning_rate=learning_rate),
     'LightGBM': LGBMClassifier(random_state=42, learning_rate=learning_rate),
-    'CatBoost': CatBoostClassifier(verbose=0, random_state=42)
 }
 
 results = {}
