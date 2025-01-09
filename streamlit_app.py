@@ -54,7 +54,7 @@ st.subheader('Correlation Matrix')
 plt.figure(figsize=(12, 10))
 corr_matrix = X_encoded.corr()
 sns.heatmap(corr_matrix, annot=False, cmap='coolwarm', cbar=True)
-st.pyplot(plt)
+st.pyplot(plt.gcf())
 
 n_estimators = st.sidebar.slider('n_estimators (Random Forest)', min_value=10, max_value=200, value=100, step=10)
 max_depth = st.sidebar.slider('max_depth (Random Forest)', min_value=5, max_value=50, value=None, step=5)
@@ -81,7 +81,8 @@ for name, model in models.items():
     plt.title(f'{name} - Confusion Matrix')
     plt.xlabel('Predicted')
     plt.ylabel('Actual')
-    st.pyplot(plt)
+    st.pyplot(plt.gcf())
+
     st.write(f"Classification Report for {name}:")
     st.text(classification_report(y_test, y_pred))
 
@@ -105,4 +106,4 @@ for name, model in models.items():
         top_features.plot(kind='barh', figsize=(8, 5), color='teal')
         plt.title(f'Top 10 Feature Importances - {name}')
         plt.xlabel('Importance Score')
-        st.pyplot(plt)
+        st.pyplot(plt.gcf())
