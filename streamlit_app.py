@@ -70,13 +70,3 @@ axes[0].set_ylabel("Mean Squared Error")
 results_df["R2 Score"].plot(kind="bar",ax=axes[1],color="salmon",title="Model Comparison: R2 Score")
 axes[1].set_ylabel("R2 Score")
 st.pyplot(fig3)
-for name,model in models.items():
-    if hasattr(model,"feature_importances_"):
-        st.subheader(f"Top 10 Feature Importances - {name}")
-        fig4=plt.figure()
-        fi=pd.Series(model.feature_importances_,index=X.columns)
-        top10=fi.nlargest(10)
-        top10.plot(kind="barh",color="teal")
-        plt.title(f"Top 10 Feature Importances - {name}")
-        plt.xlabel("Importance Score")
-        st.pyplot(fig4)
